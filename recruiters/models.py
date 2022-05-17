@@ -8,9 +8,10 @@ from versatileimagefield.fields import VersatileImageField
 class Recruiter(BaseModel):
     name = models.CharField(max_length=128)
     role = models.CharField(max_length=128)
-    skill = models.CharField(max_length=128)
+    email = models.EmailField()
     phone = models.CharField(max_length=128)
-    date_of_birth = models.DateField()
+    role = models.CharField(max_length=128)
+    location = models.CharField(max_length=128)
 
     class Meta:
         verbose_name = "Applicant"
