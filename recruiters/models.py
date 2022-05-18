@@ -14,8 +14,8 @@ class Recruiter(BaseModel):
     location = models.CharField(max_length=128)
 
     class Meta:
-        verbose_name = "Applicant"
-        verbose_name_plural = "Applicants"
+        verbose_name = "Recruiter"
+        verbose_name_plural = "Recruiters"
 
         def __str__(self):
             return str(self.name)
