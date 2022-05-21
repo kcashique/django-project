@@ -16,10 +16,6 @@
       <tr>
         <td>{{forloop.counter}}</td>
         <td> {{object.name}} </td>
-        <td> {{object.logo}} </td>
-        <td> {{object.about}} </td>
-        <td> {{object.location}} </td>
-        <td> {{object.industry}} </td>
         <td> {{object.is_active}} </td>
         {% if request.user.is_superuser %}
         <td>

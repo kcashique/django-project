@@ -6,15 +6,15 @@ from versatileimagefield.fields import VersatileImageField
 
 
 
-class Skill(BaseModel):
+class Company(BaseModel):
     name = models.CharField(max_length=128)
     about = models.TextField()
-    skill = models.CharField(max_length=128)
+    location = models.CharField(max_length=128)
     industry = models.CharField(max_length=128)
 
     class Meta:
-        verbose_name = "Skill"
-        verbose_name_plural = "Skills"
+        verbose_name = "Company"
+        verbose_name_plural = "Companis"
 
         def __str__(self):
             return str(self.name)
@@ -27,6 +27,36 @@ class Skill(BaseModel):
 
     def get_delete_url(self):
         return reverse_lazy('jobs:company_delete', kwargs={'pk': self.pk})
+
+    def get_fields(self):
+        return [
+        (
+            field.verbose_name.title(),
+            field.value_from_object(self) if field.is_relation else field.value_from_object(self),
+        )
+        for field in self._meta.fields
+    ]
+
+
+class Department(BaseModel):
+    name = models.CharField(max_length=128)
+
+
+    class Meta:
+        verbose_name = "Department"
+        verbose_name_plural = "Departments"
+
+        def __str__(self):
+            return str(self.name)
+
+    def get_absolute_url(self):
+        return reverse_lazy('jobs:department_detail', kwargs={'pk': self.pk})
+
+    def get_update_url(self):
+        return reverse_lazy('jobs:department_update', kwargs={'pk': self.pk})
+
+    def get_delete_url(self):
+        return reverse_lazy('jobs:department_delete', kwargs={'pk': self.pk})
 
     def get_fields(self):
         return [
