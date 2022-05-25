@@ -71,10 +71,10 @@ class Department(BaseModel):
 class Job(BaseModel):
     job_title = models.CharField(max_length=128)
     job_post = models.CharField(max_length=128)
-    job_category = models.CharField(max_length=128)
-    company = models.CharField(max_length=128)
+    job_department = models.ForeignKey(Department, on_delete=models.PROTECT)
+    company = models.ForeignKey(Company, on_delete=models.PROTECT)
     job_requirment = models.CharField(max_length=128)
-    salary = models.CharField(max_length=128)
+    salary_range = models.CharField(max_length=128)
     job_location = models.ForeignKey(State, related_name="applied_state", on_delete=models.CASCADE)
     job_description = models.TextField()
 
